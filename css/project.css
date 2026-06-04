@@ -6,7 +6,7 @@
 /* ---------- Верхний блок: галерея + карточка покупки ---------- */
 .project-top {
   display: grid;
-  grid-template-columns: 1fr 560px;
+  grid-template-columns: 1fr 760px;
   gap: 24px;
   margin-top: 24px
 }
@@ -112,7 +112,7 @@
   font-size: 38px;
   font-weight: 800;
   color: var(--navy);
-  font-family: 'Onest', sans-serif
+  font-family: 'Gilroy', sans-serif
 }
 
 .buy-card__price {
@@ -120,7 +120,7 @@
   font-weight: 800;
   color: var(--navy);
   white-space: nowrap;
-  font-family: 'Onest', sans-serif
+  font-family: 'Gilroy', sans-serif
 }
 
 .buy-card__price small {
@@ -139,14 +139,14 @@
 }
 
 .buy-card__actions .btn-primary {
-  min-height: 64px;
+  min-height: 89px;
   padding-left: 26px;
   font-size: 16px
 }
 
 .buy-card__actions .btn-primary .btn-circle {
-  width: 48px;
-  height: 48px
+  width: 69px;
+  height: 69px
 }
 
 .btn-present {
@@ -191,7 +191,6 @@
 }
 
 .buy-card .btn-submit {
-  width: 100%;
   justify-content: space-between;
   margin-bottom: 18px
 }
@@ -218,8 +217,8 @@
 
 .buy-card__row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px
+  grid-template-columns: repeat(2, 289px);
+  justify-content: space-between;
 }
 
 .buy-card__tg {
@@ -232,8 +231,22 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  font-weight: 700
+  font-weight: 700;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 44px;
 }
+
+
+
+.buy-card__tg img{
+  display: flex;
+  background: #EFF8FB;
+  padding: 20px;
+  border-radius: 50%;
+}
+
 
 .buy-card__tg svg {
   width: 20px;
@@ -260,7 +273,8 @@
 .buy-card__installment {
   background: var(--dark);
   border-radius: var(--radius-pill);
-  min-height: 62px;
+  min-height: 89px;
+  max-width: 370px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -268,13 +282,17 @@
   color: #fff;
   font-weight: 700;
   font-size: 15px;
-  margin-top: 14px
+  margin-top: 14px;
 }
 
 .buy-card__installment .pct {
   background: var(--orange);
   border-radius: var(--radius-pill);
-  padding: 10px 22px;
+  width: 69px;
+  height: 69px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 16px
 }
 
@@ -287,12 +305,12 @@
 }
 
 .specs__map-badge {
-  background: var(--orange-soft);
   color: var(--orange);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 12px;
+  border: 1px solid var(--orange);
   border-radius: var(--radius-pill);
-  padding: 8px 18px
+  padding: 15px 32px
 }
 
 .specs-grid {
@@ -338,7 +356,7 @@
   font-weight: 800;
   color: var(--navy);
   margin-top: auto;
-  font-family: 'Onest', sans-serif
+  font-family: 'Gilroy', sans-serif
 }
 
 /* ---------- Комплектация ---------- */
@@ -349,12 +367,12 @@
 }
 
 .complectation__title {
-  font-size: 36px;
+  font-size: 50px;
   font-weight: 800;
   text-align: center;
   color: var(--navy);
   margin-bottom: 48px;
-  font-family: 'Onest', sans-serif
+  font-family: 'Gilroy', sans-serif
 }
 
 .complectation__cols {
@@ -409,12 +427,13 @@
 /* ---------- Карточки-ссылки ---------- */
 .project-links {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 434px);
   gap: 24px
 }
 
 .project-link {
   background: var(--orange-soft);
+  border: 1px solid var(--orange);
   border-radius: var(--radius-md);
   padding: 34px;
   display: flex;
@@ -433,7 +452,6 @@
   width: 48px;
   height: 48px;
   border-radius: 14px;
-  background: #fff;
   color: var(--orange);
   display: flex;
   align-items: center;
@@ -460,10 +478,10 @@
   position: absolute;
   top: 30px;
   right: 30px;
-  width: 40px;
-  height: 40px;
+  width: 53px;
+  height: 53px;
+  border: 1px solid var(--orange);
   border-radius: 50%;
-  background: #fff;
   color: var(--orange);
   display: flex;
   align-items: center;

@@ -54,7 +54,9 @@
     if (!track) return;
     function amount() {
       var first = track.children[0];
-      return first ? first.getBoundingClientRect().width + 24 : 320;
+      if (!first) return 320;
+      var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+      return first.getBoundingClientRect().width + gap;
     }
     document.querySelectorAll(nextSel).forEach(function (b) {
       b.addEventListener('click', function () { animateScroll(track, track.scrollLeft + amount()); });
@@ -107,5 +109,35 @@
       alert('Спасибо за заявку! Наш менеджер свяжется с вами в ближайшее время.');
     });
   });
+
+  /* ---------- 3D-наклон карточек при наведении ---------- */
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (finePointer && !reduceMotion) {
+    var MAX_TILT = 9; /* градусов */
+    document.querySelectorAll('.service-card, .example-card').forEach(function (card) {
+      var raf = null;
+      card.addEventListener('mousemove', function (e) {
+        var r = card.getBoundingClientRect();
+        var nx = (e.clientX - r.left) / r.width - 0.5;
+        var ny = (e.clientY - r.top) / r.height - 0.5;
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(function () {
+          /* угол под курсором «проседает» (уходит на задний план) */
+          card.style.transform =
+            'perspective(900px) rotateX(' + (-ny * MAX_TILT).toFixed(2) +
+            'deg) rotateY(' + (nx * MAX_TILT).toFixed(2) + 'deg) scale(1.015)';
+        });
+      });
+      card.addEventListener('mouseenter', function () {
+        card.classList.add('is-tilting');
+      });
+      card.addEventListener('mouseleave', function () {
+        if (raf) cancelAnimationFrame(raf);
+        card.classList.remove('is-tilting');
+        card.style.transform = '';
+      });
+    });
+  }
 
 })();
