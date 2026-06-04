@@ -110,6 +110,16 @@
     });
   });
 
+  /* ---------- Тень у закреплённой шапки при скролле ---------- */
+  var headerEl = document.querySelector('.header');
+  if (headerEl) {
+    var onHeaderScroll = function () {
+      headerEl.classList.toggle('is-stuck', window.scrollY > 8);
+    };
+    window.addEventListener('scroll', onHeaderScroll, { passive: true });
+    onHeaderScroll();
+  }
+
   /* ---------- 3D-наклон карточек при наведении ---------- */
   var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
